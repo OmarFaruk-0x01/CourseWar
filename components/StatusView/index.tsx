@@ -11,7 +11,7 @@ const StatusView: FC<StatusViewPorps> = ({ state, showText ,...props }) => {
           !showText ? "after:right-[50%]" : ""
         } after:translate-x-2 ${
           showText ? "after:top-2" : ""
-        } after:-top-1 after:w-2 after:h-2 after:rounded-full ${getStateColor(
+        } after:top-1 after:w-2 after:h-2 after:rounded-full ${getStateColor(
           state
         )}`}
       >
