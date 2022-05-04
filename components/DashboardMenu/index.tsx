@@ -1,7 +1,6 @@
 import { FC } from "react";
-import { AiOutlineUser } from "react-icons/ai";
-import DashIcon from "../DashIcon";
 import { DashboardMenuProps } from "./index.interface";
+import DashIcon from "../DashIcon";
 
 const DashboardMenu: FC<DashboardMenuProps> = ({
   hideText,

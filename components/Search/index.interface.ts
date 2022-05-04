@@ -1,4 +1,4 @@
-import { DetailedHTMLProps, HTMLAttributes, ClassType, ComponentClass, ClassAttributes } from "react";
+import { DetailedHTMLProps, HTMLAttributes } from "react";
 
 export interface SearchProps
   extends DetailedHTMLProps<

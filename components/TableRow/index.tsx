@@ -1,14 +1,12 @@
-import { FC, useEffect, useState } from "react"
-import breakpoints from "../../constants/breakpoints";
+import { FC } from "react";
+import { TableRowProps } from "./index.interface";
 import useWindowSize from "../../hooks/useWindowSize";
 import CheckBox from "../CheckBox";
 import StatusView from "../StatusView";
-import TextView from '../TextView/index';
-import { TableRowProps } from "./index.interface";
+import TextView from "../TextView/index";
 
 const TableRow: FC<TableRowProps> = ({ rowContent }) => {
-  const isHide = useWindowSize('tablet');
-
+  const isHide = useWindowSize("tablet");
 
   return (
     <tr className="my-1 hover:bg-gray-50 odd:bg-primary-50 ">

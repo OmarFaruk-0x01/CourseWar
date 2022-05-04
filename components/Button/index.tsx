@@ -1,10 +1,10 @@
 import { FC } from "react";
+import { ButtonProps } from "./index.interface";
 import {
-  ButtonProps,
   getButtonContent,
   getButtonSizes,
   getButtonType,
-} from "./index.interface";
+} from "./index.styles";
 
 const Button: FC<ButtonProps> = ({
   buttonContent,

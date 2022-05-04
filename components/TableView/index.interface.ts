@@ -1,6 +1,5 @@
-import React, { TableHTMLAttributes } from "react";
+import { TableHTMLAttributes } from "react";
 import customData from "../../constants/customData";
-import { TableHeaderProps } from "../TableHeader/index.interface";
 
 export interface TableViewProps extends TableHTMLAttributes<HTMLTableElement> {
   data: typeof customData[0][];

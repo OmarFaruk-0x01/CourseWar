@@ -1,13 +1,13 @@
 import type { NextPage } from "next";
-import {  useRouter } from "next/router";
+import { useRouter } from "next/router";
 import { useEffect } from "react";
 
 const Home: NextPage = () => {
-  const router = useRouter()
+  const router = useRouter();
   useEffect(() => {
-    router.replace('/dashboard')
-  }, [])
-  return <></>
+    router.replace("/dashboard");
+  }, []);
+  return <></>;
 };
 
 export default Home;

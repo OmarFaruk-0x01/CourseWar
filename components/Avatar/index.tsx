@@ -1,9 +1,6 @@
 import { FC } from "react";
-import {
-  AvatarProps,
-  getAvatarColors,
-  getAvatarSizes,
-} from "./index.interface";
+import { AvatarProps } from "./index.interface";
+import { getAvatarColors, getAvatarSizes } from "./index.styles";
 
 const Avatar: FC<AvatarProps> = ({
   title,
@@ -25,7 +22,9 @@ const Avatar: FC<AvatarProps> = ({
       style={{ ...bgImageStyle }}
       className={`
       ${getAvatarSizes(avatarSizes)} 
-      ${getAvatarColors(avatarColor)} rounded-full uppercase bg-cover ${extentClassName}`}
+      ${getAvatarColors(
+        avatarColor
+      )} rounded-full uppercase bg-cover ${extentClassName}`}
       {...props}
     >
       {!avatarImage && title.slice(0, 2)}

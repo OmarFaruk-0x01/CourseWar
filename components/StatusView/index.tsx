@@ -2,7 +2,7 @@ import { FC } from "react";
 import { StatusViewPorps } from "./index.interface";
 import { getStateColor } from "./index.styles";
 
-const StatusView: FC<StatusViewPorps> = ({ state, showText ,...props }) => {
+const StatusView: FC<StatusViewPorps> = ({ state, showText, ...props }) => {
   return (
     <div className="relative" {...props}>
       <span

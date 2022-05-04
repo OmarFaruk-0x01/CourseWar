@@ -1,8 +1,8 @@
 import { FC } from "react";
 import { AiOutlineArrowDown } from "react-icons/ai";
+import { TableHeaderProps } from "./index.interface";
 import Button from "../Button";
 import CheckBox from "../CheckBox";
-import { TableHeaderProps } from "./index.interface";
 
 const TableHeader: FC<TableHeaderProps> = () => {
   return (

@@ -1,4 +1,4 @@
-import { HTMLAttributes, DetailedHTMLProps, ReactElement } from "react";
+import { HTMLAttributes, DetailedHTMLProps } from "react";
 import { IconType, IconBaseProps } from "react-icons";
 
 export interface DashIconProps

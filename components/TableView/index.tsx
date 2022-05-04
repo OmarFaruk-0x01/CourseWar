@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { AiOutlineDown, AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
-import Button from "../Button";
 import { TableViewProps } from "./index.interface";
+import Button from "../Button";
 
 const TableView: FC<TableViewProps> = ({ data, renderHeader, renderRow }) => {
   function renderTableRow() {

@@ -1,6 +1,6 @@
 import { FC } from "react";
-import Button from "../../components/Button";
 import { BiChevronDown, BiNotification } from "react-icons/bi";
+import Button from "../../components/Button";
 import Search from "../../components/Search";
 import DashIcon from "../../components/DashIcon";
 import Avatar from "../../components/Avatar";
