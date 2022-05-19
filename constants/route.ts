@@ -1,5 +1,5 @@
 import { AiFillDashboard, AiOutlineRadiusSetting } from "react-icons/ai";
-import { MdOutlineDocumentScanner, MdOutlineInventory2 } from "react-icons/md";
+import { MdOutlineDocumentScanner, MdOutlineInventory2, MdSettings } from "react-icons/md";
 
 export const ROUTES = [
     {
@@ -8,18 +8,18 @@ export const ROUTES = [
         title: "Dashboard",
     },
     {
-        route: "/inventory",
+        route: "/courses",
         icon: MdOutlineInventory2,
-        title: "Inventory",
+        title: "Courses",
     },
     {
-        route: "/documents",
+        route: "/books",
         icon: MdOutlineDocumentScanner,
-        title: "Documents",
+        title: "Books",
     },
     {
         route: "/settings",
-        icon: AiOutlineRadiusSetting,
+        icon: MdSettings,
         title: "Settings",
     },
 ];

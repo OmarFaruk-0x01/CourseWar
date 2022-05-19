@@ -1,5 +1,6 @@
 const colors = require('tailwindcss/colors')
 const Screens = require('./constants/breakpoints')
+
 module.exports = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx}",

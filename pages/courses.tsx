@@ -1,4 +1,5 @@
 import type { NextPage } from "next";
+import CoursesView from "../components/CoursesView";
 import Search from "../components/Search";
 import TableHeader from "../components/TableHeader";
 import TableRow from "../components/TableRow";
@@ -13,12 +14,8 @@ const Inventory: NextPage = () => {
         <div className="p-3 py-5 tablet:flex items-center justify-start">
           <Search extentClassName="tablet:min-w-[400px]" />
         </div>
-        <TableView
-          data={customData}
-          renderHeader={() => <TableHeader />}
-          renderRow={(item, index) => (
-            <TableRow key={item.Title} rowContent={item} />
-          )}
+        <CoursesView
+          
         />
       </div>
     </Layout>
