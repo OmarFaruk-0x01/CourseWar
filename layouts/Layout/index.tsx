@@ -6,7 +6,7 @@ import Navbar from "../Navbar/index";
 const Layout: FC<LayoutProps> = ({ title, children, ...props }) => {
   return (
     <div className="z-10 bg-white" {...props}>
-      <Header extendClassName={'tablet:hidden'}/>
+      <Header />
       <div className="flex z-10 tablet:py-16">
         <div className="tablet:fixed  h-full">
           <Navbar />
