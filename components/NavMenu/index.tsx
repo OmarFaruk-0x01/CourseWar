@@ -11,13 +11,13 @@ const NavMenu: FC<NavMenuProps> = ({ route, title }) => {
   const isActive = router.asPath === route;
   return (
     <Link href={route}>
-      <a className="group relative px-2 py-2 my-1 mx-2 flex items-center hover:!text-primary-500 ">
+      <a className="group transition-all relative px-2 py-2 my-1 mx-2 flex items-center hover:!text-primary-500 ">
         {isActive ? (
           <motion.span
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             layoutId="nav_route"
-            className="absolute block left-0 w-1 h-full bg-primary-500 tablet:w-full tablet:h-1 tablet:bottom-0 rounded-full tablet:group-hover:h-full"
+            className="absolute block left-0 w-1 h-full bg-primary-500 tablet:w-full tablet:h-1 tablet:bottom-0 rounded-full "
           />
         ) : null}
 

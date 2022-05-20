@@ -32,7 +32,7 @@ const Header: FC<{}> = () => {
       </div>
 
       <div
-        className={`fixed w-2/3 h-full right-0 bottom-0 bg-white items-center justify-center shadow-lg  z-10   transition-all duration-200 ${
+        className={`fixed w-2/3 h-full right-0 bottom-0 bg-white items-center justify-center shadow-lg  z-50   transition-all duration-200 ${
           isNavOpen ? "translate-x-0" : "translate-x-[100%]"
         }
         tablet:flex flex-1 tablet:translate-x-0 tablet:relative tablet:shadow-none`}

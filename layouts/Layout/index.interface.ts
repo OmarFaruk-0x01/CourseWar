@@ -6,4 +6,5 @@ export interface LayoutProps
   title: string;
   withHeader?: boolean;
   withSidebar?: boolean;
+  renderLeftSideBar?: JSX.Element
 }

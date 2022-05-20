@@ -7,7 +7,7 @@ const Layout: FC<LayoutProps> = ({
   title,
   children,
   withHeader = true,
-  withSidebar,
+  renderLeftSideBar,
   ...props
 }) => {
   const isShouldShowHeader = false; //useWindowSize("mobile");
@@ -15,14 +15,15 @@ const Layout: FC<LayoutProps> = ({
     <div className="z-10 bg-white" {...props}>
       {(withHeader || !isShouldShowHeader) && <Header />}
       <div className={`flex z-10 ${withHeader ? "tablet:py-20" : ""}`}>
-        {withSidebar && (
+        {renderLeftSideBar && (
           <div className="tablet:fixed  h-full">
-            <SideBar withLogo={!withHeader} />
+            <SideBar withLogo={!withHeader}>{renderLeftSideBar}</SideBar>
           </div>
         )}
+
         <div
           className={`flex-1 ${
-            withSidebar ? "tablet:ml-20 laptop:!ml-48" : ""
+            renderLeftSideBar ? "tablet:ml-20 laptop:!ml-48" : ""
           }`}
         >
           <h2 className="font-medium text-lg p-3 border-b-[1px]">{title}</h2>

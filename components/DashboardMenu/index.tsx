@@ -14,12 +14,12 @@ const DashboardMenu: FC<DashboardMenuProps> = ({
 }) => {
   return (
     <AnimatePresence>
-      <button
-        className={`${extentClassName} relative group flex  items-center justify-between rounded-md px-2 gap-5 py-2 active:bg-gray-100 ${
-          showBg ? "bg-white" : ""
-        }  transition-all`}
-        {...props}
-      >
+    <button
+      className={`${extentClassName} relative group flex  items-center justify-between rounded-md px-2 gap-5 py-2 active:bg-gray-100 ${
+        showBg ? "bg-white" : ""
+      }  transition-all`}
+      {...props}
+    >
         <span className="group-hover:text-primary-500 flex gap-1 items-center justify-center text-gray-500">
           {active ? (
             <motion.div
@@ -72,8 +72,8 @@ const DashboardMenu: FC<DashboardMenuProps> = ({
             className="absolute inline-block top-0 left-0 w-full h-full bg-primary-500 -z-[1] rounded-lg"
           />
         )}
-      </button>
-    </AnimatePresence>
+    </button>
+      </AnimatePresence>
   );
 };
 

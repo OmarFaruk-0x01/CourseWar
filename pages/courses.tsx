@@ -1,7 +1,4 @@
-import type {
-  GetServerSidePropsContext,
-  NextPage,
-} from "next";
+import type { GetServerSidePropsContext, NextPage } from "next";
 import CoursesView from "../components/CoursesView";
 import Search from "../components/Search";
 import TableHeader from "../components/TableHeader";
@@ -11,10 +8,11 @@ import customData from "../constants/customData";
 import Layout from "../layouts/Layout";
 import CourseView from "../components/CourseView/index";
 import { CourseType } from "../constants/types";
+import UserLeftSideBarContent from "../components/UserLeftSideBarContent";
 
 const Courses: NextPage<{ courses: CourseType[] }> = ({ courses }) => {
   return (
-    <Layout title={"Courses"} withSidebar>
+    <Layout title={"Courses"} renderLeftSideBar={<UserLeftSideBarContent />}>
       <div className="bg-white rounded-md">
         <div className="p-3 py-5 tablet:flex items-center justify-start">
           <Search extentClassName="tablet:min-w-[400px]" />
