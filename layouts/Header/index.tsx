@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { BiChevronDown, BiNotification } from "react-icons/bi";
 import Button from "../../components/Button";
 import Search from "../../components/Search";
@@ -9,7 +9,11 @@ import Badge from "../../components/Badge";
 import Image from "next/image";
 import { MdMenu } from "react-icons/md";
 import NavBar from "../NavBar";
+import useUIStore from "../../stores/UIStore";
 const Header: FC<{}> = () => {
+  const isNavOpen = useUIStore((state) => state.isOpenNav);
+  const toggolNav = useUIStore((state) => state.toggolNav);
+
   return (
     <header className="sticky top-0 tablet:fixed tablet:top-0 w-full flex items-center justify-between bg-white shadow-sm z-20 px-3 py-3">
       <div className="flex flex-row items-center justify-start gap-2 mr-3">
@@ -27,10 +31,19 @@ const Header: FC<{}> = () => {
       <div className="hidden tablet:flex flex-1 items-center justify-start">
         <Search extentClassName="tablet:w-[76%] laptop:!w-[350px]" />
       </div>
-      <div className="fixed w-2/3 h-full right-0 bottom-0 bg-white laptop:flex flex-[2] items-center justify-center shadow-lg z-10">
+      <div
+        className={`fixed w-2/3 h-full right-0 bottom-0 bg-white laptop:flex flex-[2] items-center justify-center shadow-lg z-10  transition-all duration-200 ${
+          isNavOpen ? "translate-x-0" : "translate-x-[100%]"
+        }`}
+      >
         <NavBar />
-      </div> 
-      <div className='fixed inset-0 bg-black/20 w-full h-full ' />
+      </div>
+      <div
+        onClick={toggolNav}
+        className={`fixed inset-0 bg-black/20 w-full h-full transition-all ${
+          !isNavOpen ? "hidden" : "visible"
+        } `}
+      />
 
       <div className="flex flex-[2]  items-center justify-end gap-2">
         <Badge title="Subscribed" type="subscribed" />
@@ -44,6 +57,7 @@ const Header: FC<{}> = () => {
           buttonSizes="large"
           extentClassName="tablet:flex"
           iconProps={{ size: 25 }}
+          onClick={toggolNav}
         />
       </div>
     </header>

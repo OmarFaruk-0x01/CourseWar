@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { DashboardMenuProps } from "./index.interface";
 import DashIcon from "../DashIcon";
-import {motion} from 'framer-motion'
+import { AnimatePresence, motion } from "framer-motion";
 const DashboardMenu: FC<DashboardMenuProps> = ({
   hideText,
   showBg,
@@ -19,53 +19,58 @@ const DashboardMenu: FC<DashboardMenuProps> = ({
       }  transition-all`}
       {...props}
     >
-      <span className="group-hover:text-primary-500 flex gap-1 items-center justify-center text-gray-500">
-        {active ? (
-          <motion.div
-          // transition={{duration: .15}}
-            initial={false}
-            animate={{ transform: 'translateX(0px)' }}
-          >
+      <AnimatePresence>
+        <span className="group-hover:text-primary-500 flex gap-1 items-center justify-center text-gray-500">
+          {active ? (
+            <motion.div
+              transition={{ duration: 0.2 }}
+              initial={{ x: -50 }}
+              animate={{ x: 0 }}
+            >
+              <DashIcon
+                className={`group-hover:text-primary-500 transition-colors ${
+                  active ? "text-white" : ""
+                }`}
+                _Icon={icon}
+                _iconProps={{ size: 20 }}
+              />
+            </motion.div>
+          ) : (
             <DashIcon
-              className={`group-hover:text-primary-500 transition-colors ${
-                active ? "text-white" : ""
-              }`}
+              className={`group-hover:text-primary-500 transition-colors`}
               _Icon={icon}
               _iconProps={{ size: 20 }}
             />
-          </motion.div>
-        ) : (
-          <DashIcon
-            className={`group-hover:text-primary-500 transition-colors`}
-            _Icon={icon}
-            _iconProps={{ size: 20 }}
-          />
-        )}
+          )}
 
+          {!hideText ? (
+            <motion.span
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.2 }}
+              className={` pr-2 transition-colors ${active ? "text-white" : ""}`}
+            >
+              {title}
+            </motion.span>
+          ) : null}
+        </span>
         {!hideText ? (
-          <span
-            className={`pr-2 transition-colors ${active ? "text-white" : ""}`}
-          >
-            {title}
-          </span>
+          <motion.span
+            // transition={{ duration: .15 }}
+            initial={false}
+            animate={{ opacity: 1 }}
+            className={`w-2 h-2 rounded-full ${
+              active ? "bg-white" : ""
+            } transition-colors`}
+          />
         ) : null}
-      </span>
-      {!hideText ? (
-        <motion.span
-          // transition={{ duration: .15 }}
-          initial={false}
-          animate={{ opacity: 1 }}
-          className={`w-2 h-2 rounded-full ${
-            active ? "bg-white" : ""
-          } transition-colors`}
-        />
-      ) : null}
-      {active && (
-        <motion.div
-          layoutId="route"
-          className="absolute top-0 left-0 w-full h-full bg-primary-500 -z-[1] rounded-lg"
-        ></motion.div>
-      )}
+        {active && (
+          <motion.div
+            layoutId="route"
+            className="absolute top-0 left-0 w-full h-full bg-primary-500 -z-[1] rounded-lg"
+          ></motion.div>
+        )}
+      </AnimatePresence>
     </button>
   );
 };

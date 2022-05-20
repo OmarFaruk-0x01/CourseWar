@@ -34,15 +34,15 @@ export const NAV_ROUTES = [
     title: "Home",
   },
   {
-    route: "/",
+    route: "/courses",
     title: "Courses",
   },
   {
-    route: "/",
+    route: "/books",
     title: "Books",
   },
   {
-    route: "/",
+    route: "/about-us",
     title: "About Us",
   },
 ];
