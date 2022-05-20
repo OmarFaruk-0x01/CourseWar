@@ -4,4 +4,5 @@ export interface LayoutProps
   extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
   children: ReactNode;
   title: string;
+  withHeader?: boolean;
 }

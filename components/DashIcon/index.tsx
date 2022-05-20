@@ -6,6 +6,7 @@ const DashIcon: FC<DashIconProps> = ({
   _Icon,
   _iconProps,
   children,
+  extentClassName,
   ...props
 }) => {
   const IconComp = !!_Icon
@@ -20,7 +21,7 @@ const DashIcon: FC<DashIconProps> = ({
     <div
       className={
         "w-10 h-10 p-1 flex items-center justify-center text-gray-500 " +
-        ClickStyle
+        ClickStyle + extentClassName
       }
       {...props}
     >

@@ -15,7 +15,7 @@ const CourseView: FC<CourseViewProps> = ({ course }) => {
   const { id, catagories, title, thumbnail, rating, level, description } =
     course;
   return (
-    <div className="w-full sm:max-w-[330px] desktop:max-w-[350px] bg-white shadow-lg rounded-lg overflow-hidden my-2">
+    <div className="w-full sm:max-w-lg desktop:max-w-xl bg-white shadow-lg rounded-lg overflow-hidden my-2">
       <div className={"relative h-[250px] mobile:h-[300px] sm:!h-[250px]"}>
         <Image src={thumbnail.url} layout="fill" />
       </div>

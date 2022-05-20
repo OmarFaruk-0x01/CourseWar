@@ -1,8 +1,9 @@
+import { ButtonHTMLAttributes } from "react";
+import { IconType } from "react-icons";
 
-import { ButtonHTMLAttributes } from 'react';
-import { IconType } from 'react-icons';
-
-export interface DashboardMenuProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+export interface DashboardMenuProps
+  extends ButtonHTMLAttributes<HTMLButtonElement> {
+  layoutId: string;
   hideText?: boolean;
   showBg?: boolean;
   active?: boolean;

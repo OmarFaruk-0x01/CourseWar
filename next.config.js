@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   env: {
-    API_URL: 'https://mocki.io/v1/4078e3d8-acda-46b7-9015-ff3bb3050ad1'
+    API_URL: 'https://mocki.io/v1/8d2161cf-b9ed-47a7-bf34-e1044c79281a'
   },
   reactStrictMode: true,
   images: {

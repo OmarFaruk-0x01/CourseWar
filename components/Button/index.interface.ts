@@ -1,5 +1,5 @@
 import { ButtonHTMLAttributes } from "react";
-import { IconType } from "react-icons";
+import { IconBaseProps, IconType } from "react-icons";
 
 export type ButtonContent = "icon" | "text" | "icon-text" | "text-icon";
 export type ButtonSizes =
@@ -23,5 +23,6 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   buttonContent: ButtonContent;
   buttonIcon: IconType;
   extentClassName?: string;
+  iconProps?: IconBaseProps;
 }
 

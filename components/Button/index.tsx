@@ -13,6 +13,7 @@ const Button: FC<ButtonProps> = ({
   buttonIcon,
   extentClassName,
   title,
+  iconProps,
   ...props
 }) => {
   function renderIcon() {
@@ -20,7 +21,7 @@ const Button: FC<ButtonProps> = ({
       const Icon = buttonIcon;
       return (
         <div>
-          <Icon />
+          <Icon {...iconProps} />
         </div>
       );
     }
