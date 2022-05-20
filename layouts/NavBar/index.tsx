@@ -11,9 +11,10 @@ interface NavBarProps {}
 const NavBar: FC<NavBarProps> = () => {
   const toggleNav = useUIStore(state => state.toggolNav)
   return (
-    <nav className="flex flex-col py-1 ">
+    <nav className="flex flex-col py-1 tablet:flex-row">
       <DashIcon
         onClick={toggleNav}
+        extentClassName='tablet:hidden'
         style={{cursor: 'pointer'}}
       _Icon={MdClose}
       _iconProps={{size: 25}}

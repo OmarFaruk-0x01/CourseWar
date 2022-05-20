@@ -10,7 +10,7 @@ import Layout from "../layouts/Layout";
 const Home: NextPage = () => {
   return (
     <Layout title={"Home"}>
-      <DropDownMenu />
+      
       <div className="bg-white rounded-md">
         <div className="p-3 py-5 tablet:flex items-center justify-start">
           <Search extentClassName="tablet:min-w-[400px]" />
