@@ -14,7 +14,7 @@ const SideBar: FC<SideBarProps> = ({ withLogo }) => {
   const router = useRouter();
   const isLaptop = useWindowSize("laptop");
   const isTablet = useWindowSize("tablet");
-  
+   
   return (
     <motion.aside
       layout={"size"}
