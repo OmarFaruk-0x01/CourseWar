@@ -20,7 +20,7 @@ const NavBar: FC<NavBarProps> = () => {
       _iconProps={{size: 25}}
       />
       {NAV_ROUTES.map((item) => (
-        <NavMenu {...item} />
+        <NavMenu key={item.title} {...item} />
       ))}
     </nav>
   );

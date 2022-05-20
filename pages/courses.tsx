@@ -1,5 +1,4 @@
 import type {
-  GetServerSideProps,
   GetServerSidePropsContext,
   NextPage,
 } from "next";
@@ -14,10 +13,8 @@ import CourseView from "../components/CourseView/index";
 import { CourseType } from "../constants/types";
 
 const Courses: NextPage<{ courses: CourseType[] }> = ({ courses }) => {
-  console.log(courses);
-
   return (
-    <Layout title={"Courses"}>
+    <Layout title={"Courses"} withSidebar>
       <div className="bg-white rounded-md">
         <div className="p-3 py-5 tablet:flex items-center justify-start">
           <Search extentClassName="tablet:min-w-[400px]" />
@@ -31,17 +28,17 @@ const Courses: NextPage<{ courses: CourseType[] }> = ({ courses }) => {
 export default Courses;
 
 export async function getServerSideProps(ctx: GetServerSidePropsContext) {
-  const ITEM_PER_PAGE = 9;
+  const ITEM_PER_PAGE = 8;
   const data = await fetch(process.env.API_URL || "");
   const result: { courses: CourseType[] } = await data.json();
   let Courses: CourseType[] = [];
   // console.log(result);
   if (ctx.query.page) {
-    const startFrom = (parseInt(ctx.query.page as string) - 1) * 9;
-    const endFrom = parseInt(ctx.query.page as string) * 9;
+    const startFrom = (parseInt(ctx.query.page as string) - 1) * ITEM_PER_PAGE;
+    const endFrom = parseInt(ctx.query.page as string) * ITEM_PER_PAGE;
     Courses = result.courses.slice(startFrom, endFrom);
   } else {
-    Courses = result.courses.slice(0, 9);
+    Courses = result.courses.slice(0, ITEM_PER_PAGE);
   }
   return {
     props: {

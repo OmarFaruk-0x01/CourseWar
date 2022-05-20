@@ -7,22 +7,22 @@ import {
 
 export const ROUTES = [
   {
-    route: "/dashboard",
+    path: "/dashboard",
     icon: AiFillDashboard,
     title: "Dashboard",
   },
   {
-    route: "/courses",
+    path: "/courses",
     icon: MdOutlineInventory2,
     title: "Courses",
   },
   {
-    route: "/books",
+    path: "/books",
     icon: MdOutlineDocumentScanner,
     title: "Books",
   },
   {
-    route: "/settings",
+    path: "/settings",
     icon: MdSettings,
     title: "Settings",
   },

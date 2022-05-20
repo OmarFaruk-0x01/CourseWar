@@ -14,7 +14,7 @@ const SideBar: FC<SideBarProps> = ({ withLogo }) => {
   const router = useRouter();
   const isLaptop = useWindowSize("laptop");
   const isTablet = useWindowSize("tablet");
-   
+
   return (
     <motion.aside
       layout={"size"}
@@ -35,17 +35,23 @@ const SideBar: FC<SideBarProps> = ({ withLogo }) => {
         </div>
       )}
       {ROUTES.map((route) => (
-        <Link href={route.route} key={route.route}>
-          <DashboardMenu
-            layoutId="route"
-            extentClassName=" flex-1 tablet:flex-[0] !justify-center tablet:!justify-between items-center text-sm laptop:w-[170px] tablet:hover:bg-white tablet:hover:shadow-md "
-            hideText={
-              isLaptop ? false : isTablet ? true : !(router.asPath === route.route)
-            }
-            title={route.title}
-            icon={route.icon}
-            active={router.asPath === route.route}
-          />
+        <Link href={route.path} key={route.title}>
+          <a href={route.path}>
+            <DashboardMenu
+              layoutId="route"
+              extentClassName=" flex-1 tablet:flex-[0] !justify-center tablet:!justify-between items-center text-sm laptop:w-[170px] tablet:hover:bg-white tablet:hover:shadow-md "
+              hideText={
+                isLaptop
+                  ? false
+                  : isTablet
+                  ? true
+                  : !(router.asPath === route.path)
+              }
+              title={route.title}
+              icon={route.icon}
+              active={router.asPath === route.path}
+            />
+          </a>
         </Link>
       ))}
     </motion.aside>
