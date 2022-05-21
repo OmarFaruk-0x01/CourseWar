@@ -1,19 +1,25 @@
-import { FC, useState } from "react";
+import { FC, HTMLAttributes, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import DropDownMenuItem from "../DropDownMenuItem";
 import Link from "next/link";
-interface DropDownMenuProps {
+interface DropDownMenuProps extends HTMLAttributes<HTMLDivElement> {
   renderButton: (handleToggle: () => void, props?: any) => JSX.Element;
   renderMenus: () => JSX.Element;
+  extendsClassName?: string;
 }
 
-const DropDownMenu: FC<DropDownMenuProps> = ({ renderButton, renderMenus }) => {
+const DropDownMenu: FC<DropDownMenuProps> = ({
+  renderButton,
+  renderMenus,
+  extendsClassName,
+  ...props
+}) => {
   const [open, setOpen] = useState(false);
   function toggleMenu() {
     setOpen(!open);
   }
   return (
-    <div className="flex justify-center">
+    <div className={extendsClassName + "flex justify-center"} {...props}>
       <div>
         <div className="dropdown relative">
           {renderButton(toggleMenu)}
@@ -41,7 +47,9 @@ const DropDownMenu: FC<DropDownMenuProps> = ({ renderButton, renderMenus }) => {
           border-none
         `}
                 aria-labelledby="dropdownMenuButton1d"
-              >{renderMenus()}</motion.ul>
+              >
+                {renderMenus()}
+              </motion.ul>
             )}
           </AnimatePresence>
         </div>

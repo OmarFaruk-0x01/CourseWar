@@ -22,12 +22,12 @@ const CourseView: FC<CourseViewProps> = ({ course }) => {
         }
       >
         <Button
-          title="Enroll"
-          buttonType="primary"
+          title=""
+          buttonType="tertiary"
           buttonContent="icon"
           buttonIcon={AiOutlineHeart}
           buttonSizes="medium"
-          className="z-10 absolute w-10 h-10 right-2 top-2 bg-white rounded-lg text-primary-400 shadow-lg flex items-center justify-center group-hover:bg-primary-500 transition-colors group-hover:text-white"
+          className="z-10 absolute w-10 h-10 right-2 top-2 bg-white rounded-lg text-primary-400 shadow-lg flex items-center justify-center group-hover:bg-primary-500 transition-colors group-hover:text-white active:!bg-primary-600 "
         />
 
         <Image src={thumbnail.url} layout="fill" />

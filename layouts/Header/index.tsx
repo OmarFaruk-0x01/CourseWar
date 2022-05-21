@@ -14,7 +14,7 @@ import DropDownMenu from "../../components/DropDownMenu";
 import DropDownMenuItem from "../../components/DropDownMenuItem";
 const Header: FC<{}> = () => {
   const isNavOpen = useUIStore((state) => state.isOpenNav);
-  const toggolNav = useUIStore((state) => state.toggolNav);
+  const toggleNav = useUIStore((state) => state.toggleNav);
 
   return (
     <header className="sticky top-0 tablet:fixed tablet:top-0 w-full flex items-center justify-between bg-white shadow-sm z-20 px-3 py-3">
@@ -43,7 +43,7 @@ const Header: FC<{}> = () => {
         <Search extentClassName="tablet:w-[76%] laptop:!w-[350px]" />
       </div> */}
       <div
-        onClick={toggolNav}
+        onClick={toggleNav}
         className={`fixed inset-0 bg-black/20 w-full h-full transition-all ${
           !isNavOpen ? "hidden" : "visible"
         } `}
@@ -79,7 +79,7 @@ const Header: FC<{}> = () => {
           buttonSizes="large"
           extentClassName="tablet:hidden"
           iconProps={{ size: 25 }}
-          onClick={toggolNav}
+          onClick={toggleNav}
         />
       </div>
     </header>

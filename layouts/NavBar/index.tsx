@@ -9,7 +9,7 @@ import useUIStore from "../../stores/UIStore";
 interface NavBarProps {}
 
 const NavBar: FC<NavBarProps> = () => {
-  const toggleNav = useUIStore(state => state.toggolNav)
+  const toggleNav = useUIStore(state => state.toggleNav)
   return (
     <nav className="flex flex-col py-1 tablet:flex-row">
       <DashIcon
