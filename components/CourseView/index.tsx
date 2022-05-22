@@ -1,6 +1,6 @@
 import { FC } from "react";
 import Image from "next/image";
-import { CourseShortTypes } from "../../constants/types";
+import { CourseShortTypes, courseViewType } from "../../constants/types";
 import { BiBox, BiBriefcaseAlt2 } from "react-icons/bi";
 import IconText from "../IconText";
 import { MdQueuePlayNext, MdStar } from "react-icons/md";
@@ -9,17 +9,25 @@ import { AiOutlineHeart, AiTwotoneEnvironment } from "react-icons/ai";
 
 interface CourseViewProps {
   course: CourseShortTypes;
+  viewType: courseViewType;
 }
 
-const CourseView: FC<CourseViewProps> = ({ course }) => {
+const CourseView: FC<CourseViewProps> = ({ course, viewType }) => {
   const { id, catagories, title, thumbnail, rating, level, description } =
     course;
+    console.log(viewType, id);
+    
+    
   return (
-    <div className=" group w-full sm:max-w-lg desktop:max-w-xl bg-white shadow-lg rounded-lg overflow-hidden my-2 hover:shadow-xl">
+    <div
+      className={`${
+        viewType === "landscape" ? "tablet:flex tablet:max-w-full" : ""
+      } group w-full sm:max-w-lg desktop:max-w-xl bg-white shadow-lg rounded-lg overflow-hidden my-2 hover:shadow-xl`}
+    >
       <div
-        className={
-          "relative h-[250px] mobile:h-[300px] sm:!h-[250px] mt-3 ml-3 mr-3 mb-0 rounded-lg overflow-hidden transition-all "
-        }
+        className={`relative h-[250px] mobile:h-[300px] sm:!h-[250px] mt-3 ml-3 mr-3 mb-0 ${
+          viewType === "landscape" ? "tablet:min-w-[300px] desktop:min-w-[50%] tablet:mb-3" : ""
+        } rounded-lg overflow-hidden transition-all`}
       >
         <Button
           title=""
@@ -32,19 +40,15 @@ const CourseView: FC<CourseViewProps> = ({ course }) => {
 
         <Image src={thumbnail.url} layout="fill" />
       </div>
-      {/* <div>
-        <Image
-          draggable
-          className="max-w-full min-w-full"
-          src={{
-            src: thumbnail.url,
-            width: thumbnail.width,
-            height: thumbnail.height,
-          }}
-        />
-      </div> */}
-      <div className="flex  justify-between flex-col">
-        <div className="px-4 flex-1">
+
+      <div className="flex flex-1 justify-between flex-col py-3">
+        <div
+          className={`px-4 ${
+            viewType === "landscape"
+              ? "tablet:px-1 tablet:py-1 tablet:pr-4"
+              : ""
+          } flex-1`}
+        >
           <h2 className="text-lg font-semibold my-2 line-clamp-2 group-hover:text-primary-500 transition-colors">
             {title}
           </h2>
@@ -58,7 +62,11 @@ const CourseView: FC<CourseViewProps> = ({ course }) => {
             />
           </div>
         </div>
-        <div className="p-2 flex-auto  flex items-center justify-center">
+        <div
+          className={`${
+            viewType === "landscape" ? "tablet:pr-3" : ""
+          } p-2 flex-auto flex items-center justify-center`}
+        >
           <Button
             title="Enroll"
             buttonType="primary"

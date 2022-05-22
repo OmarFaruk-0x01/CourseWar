@@ -88,3 +88,18 @@ export interface CourseType extends CourseShortTypes {
   reviews: ReviewType[];
   comments: CommentTypes[];
 }
+
+
+// UI Store Types
+export type courseViewType = "landscape" | "vertical";
+export type courseTag = "N1" | "N2" | "N3" | "N4" | "N5" | "N6";
+export type UIStoreType = {
+  isOpenNav: boolean;
+  toggleNav: () => void;
+
+  courseView: courseViewType;
+  setCourseView: (courseView: courseViewType) => () => void;
+
+  courseTag: courseTag;
+  setCourseTag: (courseTag: courseTag) => () => void;
+};

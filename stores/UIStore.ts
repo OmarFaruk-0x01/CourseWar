@@ -1,14 +1,7 @@
 import create, { SetState } from "zustand";
 import { persist } from "zustand/middleware";
+import { UIStoreType } from "../constants/types";
 
-type courseViewType = "landscape" | "vertical";
-
-export type UIStoreType = {
-  isOpenNav: boolean;
-  toggleNav: () => void;
-  courseView: courseViewType;
-  setCourseView: (courseView: courseViewType) => () => void;
-};
 
 const useUIStore = create(
   persist<UIStoreType>((set: SetState<UIStoreType>) => ({
@@ -22,6 +15,12 @@ const useUIStore = create(
     courseView: "vertical",
     setCourseView(courseView) {
       return () => set((state) => ({ ...state, courseView }));
+    },
+
+    // Course Type State
+    courseTag: "N1",
+    setCourseTag(courseTag) {
+      return () => set((state) => ({ ...state, courseTag }));
     },
   }))
 );

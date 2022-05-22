@@ -11,12 +11,12 @@ module.exports = {
   theme: {
     extend: {
       screens: {
-        ...Screens
+        ...Screens,
       },
 
       colors: {
         neonblue: colors.cyan,
-        primary: colors.sky
+        primary: colors.emerald
       }
     },
   },
