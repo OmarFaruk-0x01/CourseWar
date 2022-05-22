@@ -61,12 +61,14 @@ const Header: FC<{}> = () => {
         <Badge title="Subscribed" type="subscribed" />
         <DashIcon _Icon={BiNotification} extentClassName="hidden tablet:flex" />
         <DropDownMenu
+          menuId="profile_menu"
           renderButton={(toggleHandle, props) => (
             <Avatar
               onClick={toggleHandle}
               title="Omar"
               avatarSizes="medium"
               avatarColor="primary"
+              {...props}
             />
           )}
           renderMenus={() => (

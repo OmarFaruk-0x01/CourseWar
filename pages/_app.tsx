@@ -13,7 +13,8 @@ function MyApp({ Component, pageProps }: AppProps) {
     <IconContext.Provider value={{ size: "20px" }}>
       {/* @ts-ignore */}
       <NEXTProg color={colors.primary["500"]} height={3} showOnShallow options={{showSpinner: false}}/>
-      <Component {...pageProps} />
+      <Component 
+       {...pageProps} />
     </IconContext.Provider>
   );
 }

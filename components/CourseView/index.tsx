@@ -13,17 +13,13 @@ interface CourseViewProps {
 }
 
 const CourseView: FC<CourseViewProps> = ({ course, viewType }) => {
-  const { id, catagories, title, thumbnail, rating, level, description } =
-    course;
-    console.log(viewType, id);
-    
-    
+  const { id, catagories, title, thumbnail, rating, level, description } = course;
+  
   return (
     <div
       className={`${
         viewType === "landscape" ? "tablet:flex tablet:max-w-full" : ""
-      } group w-full sm:max-w-lg desktop:max-w-xl bg-white shadow-lg rounded-lg overflow-hidden my-2 hover:shadow-xl`}
-    >
+      } group w-full sm:max-w-lg desktop:max-w-xl bg-white shadow-lg rounded-lg overflow-hidden my-2 hover:shadow-xl`}>
       <div
         className={`relative h-[250px] mobile:h-[300px] sm:!h-[250px] mt-3 ml-3 mr-3 mb-0 ${
           viewType === "landscape" ? "tablet:min-w-[300px] desktop:min-w-[50%] tablet:mb-3" : ""

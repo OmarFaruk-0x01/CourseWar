@@ -2,6 +2,7 @@ import { FC } from "react";
 import { LayoutProps } from "./index.interface";
 import Header from "../Header";
 import SideBar from "../SideBar/index";
+import useUIStore from "../../stores/UIStore";
 
 const Layout: FC<LayoutProps> = ({
   title,
@@ -10,11 +11,16 @@ const Layout: FC<LayoutProps> = ({
   renderLeftSideBar,
   ...props
 }) => {
+  const setDropDownMenuId = useUIStore((state) => state.setDropDownMenuId);
   const isShouldShowHeader = false; //useWindowSize("mobile");
   return (
-    <div className="z-10 bg-white" {...props}>
+    <div className="z-10 bg-white" {...props} >
       {(withHeader || !isShouldShowHeader) && <Header />}
-      <div className={`flex z-10 ${withHeader ? "tablet:py-20" : ""}`}>
+      <div
+        className={`flex z-10 ${
+          withHeader ? "tablet:pt-20 pb-5 overflow-auto" : ""
+        }`}
+      >
         {renderLeftSideBar && (
           <div className="tablet:fixed  h-full">
             <SideBar withLogo={!withHeader}>{renderLeftSideBar}</SideBar>

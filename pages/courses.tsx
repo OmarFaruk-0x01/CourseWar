@@ -18,13 +18,31 @@ import useUIStore from "../stores/UIStore";
 import { motion } from "framer-motion";
 import { CourseTypes } from "../constants/courseTypes";
 import { AiOutlineDown, AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
+import MotionBgWrapper from "../components/MotionBgWrapper";
+import Link from "next/link";
+import Pagination from "../components/Pagination";
+import { useRouter } from "next/router";
 
-const Courses: NextPage<{ courses: CourseType[] }> = ({ courses }) => {
+interface CoursePageProps {
+  courses: CourseType[];
+  totalCourseCount: number;
+  currentPage: number;
+  totalPage: number;
+}
+
+const Courses: NextPage<CoursePageProps> = ({
+  courses,
+  totalCourseCount,
+  totalPage,
+  currentPage,
+}) => {
   const courseViewState = useUIStore((state) => state.courseView);
   const setCourseViewState = useUIStore((state) => state.setCourseView);
   const courseTag = useUIStore((state) => state.courseTag);
   const setCourseTag = useUIStore((state) => state.setCourseTag);
-
+  const router = useRouter();
+  console.log(router);
+  
   return (
     <Layout title={"Courses"} renderLeftSideBar={<UserLeftSideBarContent />}>
       {/* Filter Section Start */}
@@ -32,7 +50,10 @@ const Courses: NextPage<{ courses: CourseType[] }> = ({ courses }) => {
         {/* Course Types Filter Btn */}
         <div className="grid grid-cols-3 tablet:flex gap-2 items-center justify-center justify-items-center">
           {CourseTypes.map((ct) => (
-            <div key={ct} className="relative w-full flex items-center justify-center tablet:w-auto">
+            <div
+              key={ct}
+              className="relative w-full flex items-center justify-center tablet:w-auto"
+            >
               <Button
                 // disabled={parseInt(ct[1]) >= 4}
                 buttonType={"tertiary"}
@@ -84,46 +105,15 @@ const Courses: NextPage<{ courses: CourseType[] }> = ({ courses }) => {
       <CoursesView viewType={courseViewState} courses={courses} />
 
       {/* Pagination Section */}
-      <div className=" px-2 py-5 flex items-center justify-between">
-        <div className="hidden tablet:flex">
-          <Button
-            extentClassName="shadow-md"
-            buttonType="tertiary"
-            buttonContent="text-icon"
-            buttonSizes="small"
-            buttonIcon={AiOutlineDown}
-            title="10 items per page"
-          />
-        </div>
-        <div className="flex items-center justify-start">
-          <Button
-            extentClassName="shadow-md"
-            buttonType="tertiary"
-            buttonContent="text-icon"
-            buttonSizes="small"
-            buttonIcon={AiOutlineDown}
-            title="page 1 of 5"
-          />
-          <div className=" px-2 flex items-center justify-start">
-            <Button
-              extentClassName="shadow-md"
-              buttonType="tertiary"
-              buttonContent="icon"
-              buttonSizes="small"
-              buttonIcon={AiOutlineLeft}
-              title="left"
-            />
-            <Button
-              extentClassName="shadow-md"
-              buttonType="tertiary"
-              buttonContent="icon"
-              buttonSizes="small"
-              buttonIcon={AiOutlineRight}
-              title="right"
-            />
-          </div>
-        </div>
-      </div>
+      <Pagination
+        currentPage={currentPage}
+        totalPageCount={totalPage}
+        siblingCount={1}
+        totalCount={totalCourseCount}
+        onPageChange={(page) => {
+          router.push("?page=" + page);
+        }}
+      />
     </Layout>
   );
 };
@@ -146,6 +136,11 @@ export async function getServerSideProps(ctx: GetServerSidePropsContext) {
   return {
     props: {
       courses: Courses,
+      totalCourseCount: result.courses.length,
+      currentPage: isNaN(parseInt(ctx.query.page as string))
+        ? 1
+        : parseInt(ctx.query.page as string),
+      totalPage: Math.ceil(result.courses.length / ITEM_PER_PAGE),
     },
   };
 }

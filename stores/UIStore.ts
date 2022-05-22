@@ -2,7 +2,6 @@ import create, { SetState } from "zustand";
 import { persist } from "zustand/middleware";
 import { UIStoreType } from "../constants/types";
 
-
 const useUIStore = create(
   persist<UIStoreType>((set: SetState<UIStoreType>) => ({
     // Navigation State
@@ -21,6 +20,18 @@ const useUIStore = create(
     courseTag: "N1",
     setCourseTag(courseTag) {
       return () => set((state) => ({ ...state, courseTag }));
+    },
+
+    // DropdownMenu State
+    dropdownMenuId: "",
+    setDropDownMenuId(menuId) {
+      return () => set((state) => ({ ...state, dropdownMenuId: menuId }));
+    },
+
+    // Course Per Page
+    coursePerPage: 8,
+    setCoursePerPage(num) {
+      return () => set((state) => ({ ...state, coursePerPage: num }));
     },
   }))
 );

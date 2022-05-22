@@ -1,22 +1,39 @@
-import { FC, HTMLAttributes, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { FC, HTMLAttributes, useEffect, useRef, useState } from "react";
+import {
+  AnimatePresence,
+  HTMLMotionProps,
+  motion,
+  MotionProps,
+} from "framer-motion";
 import DropDownMenuItem from "../DropDownMenuItem";
 import Link from "next/link";
+import { removeAllListeners } from "process";
+import useUIStore from "../../stores/UIStore";
 interface DropDownMenuProps extends HTMLAttributes<HTMLDivElement> {
   renderButton: (handleToggle: () => void, props?: any) => JSX.Element;
   renderMenus: () => JSX.Element;
   extendsClassName?: string;
+  animateProps?: HTMLMotionProps<"ul">;
+  menuId: string;
 }
 
 const DropDownMenu: FC<DropDownMenuProps> = ({
+  menuId,
   renderButton,
   renderMenus,
   extendsClassName,
+  animateProps,
   ...props
 }) => {
-  const [open, setOpen] = useState(false);
+  const dropdownMenuId = useUIStore((state) => state.dropdownMenuId);
+  const setDropDownMenuId = useUIStore((state) => state.setDropDownMenuId);
   function toggleMenu() {
-    setOpen(!open);
+    console.log("state: ", dropdownMenuId);
+    console.log("props: ", menuId);
+    if (dropdownMenuId === menuId) {
+     return setDropDownMenuId("")();
+    }
+    setDropDownMenuId(menuId)();
   }
   return (
     <div className={extendsClassName + "flex justify-center"} {...props}>
@@ -24,19 +41,20 @@ const DropDownMenu: FC<DropDownMenuProps> = ({
         <div className="dropdown relative">
           {renderButton(toggleMenu)}
           <AnimatePresence>
-            {open && (
+            {menuId === dropdownMenuId && (
               <motion.ul
                 initial={{ x: -100, opacity: 0 }}
-                animate={{ x: -180, opacity: 1 }}
+                animate={{ x: -170, opacity: 1 }}
                 className={`
               dropdown-menu
               min-w-[200px]
               absolute
           bg-white
           text-base
-          z-50
+          z-[9999]
           float-left
           py-2
+          px-1
           list-none
           text-left
           rounded-lg
@@ -47,6 +65,7 @@ const DropDownMenu: FC<DropDownMenuProps> = ({
           border-none
         `}
                 aria-labelledby="dropdownMenuButton1d"
+                {...animateProps}
               >
                 {renderMenus()}
               </motion.ul>

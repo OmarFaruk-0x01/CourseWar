@@ -31,7 +31,7 @@ const Button: FC<ButtonProps> = ({
   function renderText() {
     if (buttonContent.includes("text")) return <p>{title}</p>;
   }
-
+  
   return (
     <button
       className={`

@@ -25,11 +25,11 @@ const UserLeftSideBarContent = () => {
                   ? false
                   : isTablet
                   ? true
-                  : !(router.asPath === route.path)
+                  : !(router.pathname === route.path)
               }
               title={route.title}
               icon={route.icon}
-              active={router.asPath === route.path}
+              active={router.pathname === route.path}
             />
           </a>
         </Link>

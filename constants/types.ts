@@ -89,7 +89,6 @@ export interface CourseType extends CourseShortTypes {
   comments: CommentTypes[];
 }
 
-
 // UI Store Types
 export type courseViewType = "landscape" | "vertical";
 export type courseTag = "N1" | "N2" | "N3" | "N4" | "N5" | "N6";
@@ -102,4 +101,11 @@ export type UIStoreType = {
 
   courseTag: courseTag;
   setCourseTag: (courseTag: courseTag) => () => void;
+
+  dropdownMenuId: string;
+  setDropDownMenuId: (menuId: string) => () => void;
+
+  coursePerPage: number;
+  setCoursePerPage: (num: number) => () => void;
+  
 };
