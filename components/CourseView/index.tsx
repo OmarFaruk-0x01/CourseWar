@@ -6,6 +6,7 @@ import IconText from "../IconText";
 import { MdQueuePlayNext, MdStar } from "react-icons/md";
 import Button from "../Button";
 import { AiOutlineHeart, AiTwotoneEnvironment } from "react-icons/ai";
+import { motion } from "framer-motion";
 
 interface CourseViewProps {
   course: CourseShortTypes;
@@ -13,16 +14,21 @@ interface CourseViewProps {
 }
 
 const CourseView: FC<CourseViewProps> = ({ course, viewType }) => {
-  const { id, catagories, title, thumbnail, rating, level, description } = course;
-  
+  const { id, catagories, title, thumbnail, rating, level, description } =
+    course;
+
   return (
     <div
       className={`${
         viewType === "landscape" ? "tablet:flex tablet:max-w-full" : ""
-      } group w-full sm:max-w-lg desktop:max-w-xl bg-white shadow-lg rounded-lg overflow-hidden my-2 hover:shadow-xl`}>
-      <div
+      } group w-full sm:max-w-lg desktop:max-w-xl bg-white shadow-lg rounded-lg overflow-hidden my-2 hover:shadow-xl`}
+    >
+      <motion.div
+        layoutId={"courseThumb-" + id}
         className={`relative h-[250px] mobile:h-[300px] sm:!h-[250px] mt-3 ml-3 mr-3 mb-0 ${
-          viewType === "landscape" ? "tablet:min-w-[300px] desktop:min-w-[50%] tablet:mb-3" : ""
+          viewType === "landscape"
+            ? "tablet:min-w-[300px] desktop:!min-w-[50%] tablet:mb-3"
+            : ""
         } rounded-lg overflow-hidden transition-all`}
       >
         <Button
@@ -35,7 +41,7 @@ const CourseView: FC<CourseViewProps> = ({ course, viewType }) => {
         />
 
         <Image src={thumbnail.url} layout="fill" />
-      </div>
+      </motion.div>
 
       <div className="flex flex-1 justify-between flex-col py-3">
         <div

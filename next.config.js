@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   env: {
-    API_URL: 'https://mocki.io/v1/8d2161cf-b9ed-47a7-bf34-e1044c79281a'
+    API_URL: 'https://coursesserver.omarfaruk24.repl.co'
   },
   reactStrictMode: true,
   images: {

@@ -1,5 +1,5 @@
 import type { GetServerSidePropsContext, NextPage } from "next";
-import { courseTag, CourseType } from "../constants/types";
+import { courseTag, CourseType } from "../../constants/types";
 import {
   BsBoundingBox,
   BsViewList,
@@ -7,20 +7,20 @@ import {
   BsChevronCompactDown,
   BsChevronDown,
 } from "react-icons/bs";
-import CoursesView from "../components/CoursesView";
-import Search from "../components/Search";
-import Layout from "../layouts/Layout";
-import DashIcon from "../components/DashIcon";
-import UserLeftSideBarContent from "../components/UserLeftSideBarContent";
-import Button from "../components/Button";
-import DropDownMenu from "../components/DropDownMenu";
-import useUIStore from "../stores/UIStore";
+import CoursesView from "../../components/CoursesView";
+import Search from "../../components/Search";
+import Layout from "../../layouts/Layout";
+import DashIcon from "../../components/DashIcon";
+import UserLeftSideBarContent from "../../components/UserLeftSideBarContent";
+import Button from "../../components/Button";
+import DropDownMenu from "../../components/DropDownMenu";
+import useUIStore from "../../stores/UIStore";
 import { motion } from "framer-motion";
-import { CourseTypes } from "../constants/courseTypes";
+import { CourseTypes } from "../../constants/courseTypes";
 import { AiOutlineDown, AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
-import MotionBgWrapper from "../components/MotionBgWrapper";
+import MotionBgWrapper from "../../components/MotionBgWrapper";
 import Link from "next/link";
-import Pagination from "../components/Pagination";
+import Pagination from "../../components/Pagination";
 import { useRouter } from "next/router";
 
 interface CoursePageProps {
@@ -42,9 +42,12 @@ const Courses: NextPage<CoursePageProps> = ({
   const setCourseTag = useUIStore((state) => state.setCourseTag);
   const router = useRouter();
   console.log(router);
-  
+
   return (
-    <Layout title={"Courses"} renderLeftSideBar={<UserLeftSideBarContent />}>
+    <Layout
+      title={"Courses"}
+      renderLeftSideBar={(props) => <UserLeftSideBarContent {...props} />}
+    >
       {/* Filter Section Start */}
       <div className="p-3 py-5 tablet:flex items-center justify-between sticky bg-white ">
         {/* Course Types Filter Btn */}
@@ -122,7 +125,7 @@ export default Courses;
 
 export async function getServerSideProps(ctx: GetServerSidePropsContext) {
   const ITEM_PER_PAGE = 8;
-  const data = await fetch(process.env.API_URL || "");
+  const data = await fetch(process.env.API_URL + "/courses" || "");
   const result: { courses: CourseType[] } = await data.json();
   let Courses: CourseType[] = [];
   // console.log(result);

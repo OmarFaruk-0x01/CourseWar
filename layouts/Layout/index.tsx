@@ -12,9 +12,11 @@ const Layout: FC<LayoutProps> = ({
   ...props
 }) => {
   const setDropDownMenuId = useUIStore((state) => state.setDropDownMenuId);
+  const isOpenSidebar = useUIStore((state) => state.sideBarToggle);
+
   const isShouldShowHeader = false; //useWindowSize("mobile");
   return (
-    <div className="z-10 bg-white" {...props} >
+    <div className="z-10 bg-white" {...props}>
       {(withHeader || !isShouldShowHeader) && <Header />}
       <div
         className={`flex z-10 ${
@@ -23,13 +25,19 @@ const Layout: FC<LayoutProps> = ({
       >
         {renderLeftSideBar && (
           <div className="tablet:fixed  h-full">
-            <SideBar withLogo={!withHeader}>{renderLeftSideBar}</SideBar>
+            <SideBar withLogo={!withHeader} isOpenSideBar={isOpenSidebar}>
+              {renderLeftSideBar({ isOpenSidebar })}
+            </SideBar>
           </div>
         )}
 
         <div
           className={`flex-1 ${
-            renderLeftSideBar ? "tablet:ml-20 laptop:!ml-48" : ""
+            renderLeftSideBar
+              ? !isOpenSidebar
+                ? "tablet:ml-20 laptop:!ml-20"
+                : "tablet:!ml-48 laptop:!ml-48"
+              : ""
           }`}
         >
           <h2 className="font-medium text-lg p-3 border-b-[1px]">{title}</h2>

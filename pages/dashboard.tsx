@@ -9,7 +9,10 @@ import Layout from "../layouts/Layout";
 
 const Dashboard: NextPage = () => {
   return (
-    <Layout title={"Dashboard"} renderLeftSideBar={<UserLeftSideBarContent />}>
+    <Layout
+      title={"Dashboard"}
+      renderLeftSideBar={(props) => <UserLeftSideBarContent {...props} />}
+    >
       <div className="bg-white rounded-md">
         <div className="p-3 py-5 tablet:flex items-center justify-start">
           <Search extentClassName="tablet:min-w-[400px]" />

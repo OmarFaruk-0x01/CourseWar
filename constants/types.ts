@@ -108,4 +108,6 @@ export type UIStoreType = {
   coursePerPage: number;
   setCoursePerPage: (num: number) => () => void;
   
+  sideBarToggle: boolean
+  toggleSideBar: () => void
 };
