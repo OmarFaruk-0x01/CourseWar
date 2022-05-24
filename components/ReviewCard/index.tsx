@@ -3,6 +3,7 @@ import { FC } from "react";
 import { BiLike, BiShareAlt } from "react-icons/bi";
 import { StudentType } from "../../constants/types";
 import Avatar from "../Avatar";
+import AvatarCard from "../AvatarCard";
 import Button from "../Button";
 
 interface ReviewCardProps {
@@ -13,10 +14,7 @@ const ReviewCard: FC<ReviewCardProps> = ({ student_info }) => {
   return (
     <section className="py-2 pt-3 px-2 bg-gray-100 rounded-md">
       <div className="flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <Avatar avatarColor="orange" avatarSizes="medium" title="Omar Faruk" />
-          <h4 className="font-medium">{student_info.name}</h4>
-        </div>
+        <AvatarCard title={student_info.name} subtitle='ssadasd' />
         <span className="text-xs text-gray-400">
           {new Date().toDateString()}
         </span>

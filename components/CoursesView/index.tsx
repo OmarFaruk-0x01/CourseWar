@@ -28,7 +28,8 @@ const CoursesView: FC<CoursesViewProps> = ({ courses, viewType }) => {
     );
   }
   return (
-    <div
+    <div 
+     
       className={`p-2 grid grid-cols-1  gap-2 justify-items-center ${
         viewType === "landscape"
           ? "tablet:grid-cols-1 w-full desktop:!grid-cols-2"

@@ -30,18 +30,21 @@ interface CoursePageProps {
   totalPage: number;
 }
 
-const Courses: NextPage<CoursePageProps> = ({
-  courses,
-  totalCourseCount,
-  totalPage,
-  currentPage,
-}) => {
+const Courses: NextPage<CoursePageProps> = ({ courses }) => {
   const courseViewState = useUIStore((state) => state.courseView);
+  const coursePerPage = useUIStore((state) => state.coursePerPage);
   const setCourseViewState = useUIStore((state) => state.setCourseView);
   const courseTag = useUIStore((state) => state.courseTag);
   const setCourseTag = useUIStore((state) => state.setCourseTag);
   const router = useRouter();
-  console.log(router);
+  const filteredCourses = courses.filter(
+    (course) => course.catagories.title === courseTag
+  );
+  const totalCourseCount = filteredCourses.length;
+  const currentPage = isNaN(parseInt(router.query?.page as string))
+    ? 1
+    : parseInt(router.query?.page as string);
+  const totalPage = Math.round(filteredCourses.length / coursePerPage);
 
   return (
     <Layout
@@ -105,7 +108,7 @@ const Courses: NextPage<CoursePageProps> = ({
       </div>
 
       {/* Course View Start */}
-      <CoursesView viewType={courseViewState} courses={courses} />
+      <CoursesView viewType={courseViewState} courses={filteredCourses} />
 
       {/* Pagination Section */}
       <Pagination
@@ -139,11 +142,6 @@ export async function getServerSideProps(ctx: GetServerSidePropsContext) {
   return {
     props: {
       courses: Courses,
-      totalCourseCount: result.courses.length,
-      currentPage: isNaN(parseInt(ctx.query.page as string))
-        ? 1
-        : parseInt(ctx.query.page as string),
-      totalPage: Math.ceil(result.courses.length / ITEM_PER_PAGE),
     },
   };
 }

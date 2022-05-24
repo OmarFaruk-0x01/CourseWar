@@ -119,6 +119,7 @@ export type UIStoreType = {
 
   sideBarToggle: boolean;
   toggleSideBar: () => void;
+
 };
 
 // Main Store Types

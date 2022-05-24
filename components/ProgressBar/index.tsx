@@ -16,11 +16,11 @@ const ProgressBar: FC<ProgressBarProps> = ({
   return (
     <div className="flex flex-1 gap-2 items-center justify-center">
       <div
-        className={`relative w-[100%] h-5 ${trackColor} rounded-md overflow-hidden`}
+        className={`relative w-[100%] h-3 ${trackColor} rounded-sm overflow-hidden`}
       >
         <span
           style={{ width: `${progress}%` }}
-          className={`absolute left-0 top-0 h-full rounded-md ${progressColor}`}
+          className={`absolute left-0 top-0 h-full rounded-sm ${progressColor}`}
         />
       </div>
       {showText && (

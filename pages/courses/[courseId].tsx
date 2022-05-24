@@ -13,21 +13,20 @@ import TabsView from "../../components/TabsView";
 import TabView from "../../components/TabView";
 import CourseDescription from "../../components/CourseDescription";
 import CourseReviews from "../../components/CourseReview";
+import AvatarCard from "../../components/AvatarCard";
+import LessonCard from "../../components/LessonCard";
 
 interface CoursePageProps {
   course: CourseType;
 }
 
 const CoursePage: FC<CoursePageProps> = ({ course }) => {
-  console.log(course);
-  const router = useRouter();
-  console.log(router);
-
+  
   function renderCourseTitle() {
     return (
       <div className="flex items-end flex-col justify-between">
         <div className="w-full">
-          <h3 className="my-2 font-bold text-xl">{course.title}</h3>
+          <h3 className="my-2 font-semibold text-xl">{course.title}</h3>
           <h5 className="my-2 font-normal text-lg text-gray-400">
             {course.author.name}
           </h5>
@@ -52,8 +51,22 @@ const CoursePage: FC<CoursePageProps> = ({ course }) => {
 
   function renderVideo() {
     return (
-      <div className="relative overflow-hidden aspect-video rounded-md">
+      <div className="relative overflow-hidden aspect-video rounded-md desktop:!p-10">
         <Image src={course.thumbnail.url} layout="fill" />
+      </div>
+    );
+  }
+
+  function renderEnrollButton() {
+    return (
+      <div>
+        <Button
+          extentClassName="w-20"
+          buttonContent="text"
+          buttonSizes="large"
+          title="Enroll"
+          buttonType="primary"
+        />
       </div>
     );
   }
@@ -99,7 +112,7 @@ const CoursePage: FC<CoursePageProps> = ({ course }) => {
                 </TabView>
               </motion.div>
             )}
-{/* 
+            {/* 
             {tabs[2] === currentTab && (
               <motion.div
                 key={tabs[2]}
@@ -151,13 +164,38 @@ const CoursePage: FC<CoursePageProps> = ({ course }) => {
     <Layout
       renderLeftSideBar={(props) => <UserLeftSideBarContent {...props} />}
     >
-      <section className="grid  grid-cols-1 laptop:grid-cols-[3fr_1fr]">
-        <div className={`w-full px-2 tablet:px-5 laptop:!px-5 laptop:!pr-10`}>
+      <section className="grid  grid-cols-1 ">
+        <div className={`w-full px-2 tablet:px-5 laptop:!pr-[330px] big_desktop:!pr-[500px]`}>
           {renderCourseTitle()}
           {renderVideo()}
+          {/* {renderEnrollButton()} */}
           {renderTabs()}
         </div>
-        <aside className="w-full h-full laptop:row-span-2 bg-green-300"></aside>
+
+        <aside className="w-full bg-white right-0 top-0 h-full laptop:fixed laptop:w-[330px] big_desktop:!w-[500px] laptop:row-span-2 py-2 pt-10 my-3 overflow-y-auto">
+          <div className="px-3 w-full">
+            <h2 className="text-2xl">About the Course</h2>
+            <div className=" py-4">
+              <AvatarCard title="Md Omar Faruk" subtitle="Frontend Developer" />
+            </div>
+            <p className="line-clamp-5 ">{course.description}</p>
+          </div>
+          <div className="px-3 my-4 w-full ">
+            <h2 className="text-2xl">Lessons</h2>
+            <div className="grid tablet:grid-cols-2 laptop:!grid-cols-1 gap-4 my-4 grid-flow-row-dense">
+              {course.lessons.map((lesson, i) => (
+                <LessonCard
+                  isCompleted={false}
+                  isLocked={lesson.isLock}
+                  key={lesson.id}
+                  lessonId={lesson.id}
+                  lessonTitle={lesson.title}
+                  lessonIndex={i + 1}
+                />
+              ))}
+            </div>
+          </div>
+        </aside>
       </section>
     </Layout>
   );

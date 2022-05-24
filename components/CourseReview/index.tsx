@@ -17,7 +17,7 @@ const CourseReviews: FC = () => {
   function toggleReviewList() {
     setShowAllReview(!showAllReview);
   }
-  function renderReviewProgressbar() {
+  const renderReviewProgressbar = () => {
     const color: Record<number, string> = {
       1: "bg-red-300",
       2: "bg-orange-400",
@@ -37,7 +37,7 @@ const CourseReviews: FC = () => {
         </span>
       </div>
     ));
-  }
+  };
 
   return (
     <section>

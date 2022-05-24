@@ -16,7 +16,7 @@ const ReviewListView: FC<ReviewListViewProps> = ({ open }) => {
           initial={{ height: 0 }}
           animate={{ height: 400 }}
           exit={{ height: 0 }}
-          className="my-3 overflow-scroll"
+          className="my-3 overflow-scroll py-3"
         >
           <div className="grid grid-cols-1 gap-3 tablet:grid-cols-2 ">
             <ReviewCard student_info={{ id: "", name: "Omar Faruk" }} />

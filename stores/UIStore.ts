@@ -35,6 +35,7 @@ const useUIStore = create(
         return () => set((state) => ({ ...state, coursePerPage: num }));
       },
 
+      //Side bar Toggle
       sideBarToggle: true,
       toggleSideBar() {
         return set((state) => ({
