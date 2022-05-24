@@ -25,7 +25,7 @@ export interface ButtonProps
   buttonSizes?: ButtonSizes;
   buttonType?: ButtonType;
   buttonContent: ButtonContent;
-  buttonIcon: IconType;
+  buttonIcon?: IconType;
   extentClassName?: string;
   iconProps?: IconBaseProps;
 }

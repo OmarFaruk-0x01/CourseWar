@@ -2,7 +2,12 @@ import { LayoutGroup } from "framer-motion";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { FC, useState } from "react";
-import { BiArrowToLeft, BiArrowToRight, BiLeftArrow, BiRightArrow } from "react-icons/bi";
+import {
+  BiArrowToLeft,
+  BiArrowToRight,
+  BiLeftArrow,
+  BiRightArrow,
+} from "react-icons/bi";
 import { ROUTES } from "../../constants/route";
 import useWindowSize from "../../hooks/useWindowSize";
 import useUIStore from "../../stores/UIStore";
@@ -38,11 +43,11 @@ const UserLeftSideBarContent: FC<UserLeftSideBarProps> = ({
                   ? isOpenSidebar
                     ? false
                     : true
-                  : !(router.pathname === route.path)
+                  : !router.pathname.includes(route.path)
               }
               title={route.title}
               icon={route.icon}
-              active={router.pathname === route.path}
+              active={router.pathname.includes(route.path)}
             />
           </a>
         </Link>

@@ -40,7 +40,9 @@ const Layout: FC<LayoutProps> = ({
               : ""
           }`}
         >
-          <h2 className="font-medium text-lg p-3 border-b-[1px]">{title}</h2>
+          {title && (
+            <h2 className="font-medium text-lg p-3 border-b-[1px]">{title}</h2>
+          )}
           <div className="p-2 pb-20 tablet:p-5 overflow-hidden rounded-md">
             {children}
           </div>

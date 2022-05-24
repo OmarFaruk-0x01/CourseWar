@@ -1,4 +1,5 @@
 import { FC } from "react";
+import { IconType } from "react-icons";
 import { ButtonProps } from "./index.interface";
 import {
   getButtonContent,
@@ -18,7 +19,7 @@ const Button: FC<ButtonProps> = ({
 }) => {
   function renderIcon() {
     if (buttonContent.includes("icon")) {
-      const Icon = buttonIcon;
+      const Icon = buttonIcon as IconType;
       return (
         <div>
           <Icon {...iconProps} />
@@ -31,7 +32,7 @@ const Button: FC<ButtonProps> = ({
   function renderText() {
     if (buttonContent.includes("text")) return <p>{title}</p>;
   }
-  
+
   return (
     <button
       className={`

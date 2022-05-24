@@ -57,6 +57,14 @@ export interface LessonType {
   isLock: boolean;
 }
 
+export type AuthorTypes = {
+  id: string;
+  name: string;
+  sex: string;
+  phone: string;
+  email: string;
+};
+
 // Course Types
 export type CourseLevelType =
   | "Expert"
@@ -82,6 +90,7 @@ export type CourseShortTypes = {
 };
 
 export interface CourseType extends CourseShortTypes {
+  author: AuthorTypes;
   lessons: LessonType[];
   students: StudentType[];
   tags: TagsType[];
@@ -107,7 +116,13 @@ export type UIStoreType = {
 
   coursePerPage: number;
   setCoursePerPage: (num: number) => () => void;
-  
-  sideBarToggle: boolean
-  toggleSideBar: () => void
+
+  sideBarToggle: boolean;
+  toggleSideBar: () => void;
+};
+
+// Main Store Types
+export type MainStoreType = {
+  courses: CourseType[];
+  setCourses: (courses: CourseType[]) => () => void;
 };

@@ -7,6 +7,7 @@ import { MdQueuePlayNext, MdStar } from "react-icons/md";
 import Button from "../Button";
 import { AiOutlineHeart, AiTwotoneEnvironment } from "react-icons/ai";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 interface CourseViewProps {
   course: CourseShortTypes;
@@ -23,8 +24,7 @@ const CourseView: FC<CourseViewProps> = ({ course, viewType }) => {
         viewType === "landscape" ? "tablet:flex tablet:max-w-full" : ""
       } group w-full sm:max-w-lg desktop:max-w-xl bg-white shadow-lg rounded-lg overflow-hidden my-2 hover:shadow-xl`}
     >
-      <motion.div
-        layoutId={"courseThumb-" + id}
+      <div
         className={`relative h-[250px] mobile:h-[300px] sm:!h-[250px] mt-3 ml-3 mr-3 mb-0 ${
           viewType === "landscape"
             ? "tablet:min-w-[300px] desktop:!min-w-[50%] tablet:mb-3"
@@ -41,7 +41,7 @@ const CourseView: FC<CourseViewProps> = ({ course, viewType }) => {
         />
 
         <Image src={thumbnail.url} layout="fill" />
-      </motion.div>
+      </div>
 
       <div className="flex flex-1 justify-between flex-col py-3">
         <div
@@ -51,9 +51,14 @@ const CourseView: FC<CourseViewProps> = ({ course, viewType }) => {
               : ""
           } flex-1`}
         >
-          <h2 className="text-lg font-semibold my-2 line-clamp-2 group-hover:text-primary-500 transition-colors">
-            {title}
-          </h2>
+          <Link href={"/courses/" + id}>
+            <a
+              href={"/courses/" + id}
+              className="text-lg font-semibold my-2 line-clamp-2 group-hover:text-primary-500 transition-colors"
+            >
+              {title}
+            </a>
+          </Link>
           <p className="text-sm my-3 line-clamp-2">{description}</p>
           <div className="flex  items-start justify-between gap-2 my-1">
             <IconText icon={<BiBriefcaseAlt2 size={16} />} title={level} />

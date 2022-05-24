@@ -5,8 +5,8 @@ const DashIcon: FC<DashIconProps> = ({
   clickable,
   _Icon,
   _iconProps,
-  children,
-  extentClassName,
+  children="",
+  extentClassName="",
   ...props
 }) => {
   const IconComp = !!_Icon
@@ -20,8 +20,9 @@ const DashIcon: FC<DashIconProps> = ({
   return (
     <div
       className={
-        "w-10 h-10 p-1 flex items-center justify-center text-gray-500 " +
-        ClickStyle + extentClassName
+        "w-10 h-10 p-1 flex items-center justify-center text-gray-500 !text-inherit " +
+        ClickStyle +
+        extentClassName
       }
       {...props}
     >

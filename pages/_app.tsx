@@ -19,10 +19,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         showOnShallow
         options={{ showSpinner: false }}
       />
-      {/* @ts-ignore */}
-      <AnimateSharedLayout>
-        <Component {...pageProps} />
-      </AnimateSharedLayout>
+      <Component {...pageProps} />
     </IconContext.Provider>
   );
 }
